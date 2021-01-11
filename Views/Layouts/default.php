@@ -1,4 +1,5 @@
 <!doctype html>
+
 <head>
     <meta charset="utf-8">
 
@@ -20,8 +21,13 @@
 </head>
 
 <body>
+<?php
+
+session_start();
+
+?>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">MVC Todo</a>
+    <a class="navbar-brand" href="/mvc">MVC Todo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,7 +35,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/mvc">Home <span class="sr-only">(current)</span></a>
             </li>
         </ul>
     </div>
@@ -48,5 +54,13 @@
 </main>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script>
+function confirmDel(name){
+    return confirm("Đồng ý xóa Task có id :" + name +" ????");
+}
+function confirmEdit(){
+    return confirm("Đồng ý sửa Task ????");
+}
+</script>
 </body>
 </html>

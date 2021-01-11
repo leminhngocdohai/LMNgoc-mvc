@@ -4,8 +4,7 @@ namespace Mvc\Core;
 
 class Model
 {
-    function helu (){
-        echo 'lollll';
+    function getProperties(){
+        return get_object_vars($this);
     }
 }
-?>

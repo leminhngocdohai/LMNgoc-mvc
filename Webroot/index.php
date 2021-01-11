@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Mvc\Controllers\tasksController;
+use Mvc\Controllers\TasksController;
 
 use Mvc\Dispatcher;
 use Mvc\Router;

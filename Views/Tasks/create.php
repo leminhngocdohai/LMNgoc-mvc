@@ -9,5 +9,5 @@
         <label for="description">Description</label>
         <input type="text" class="form-control" id="description" placeholder="Enter a description" name="description">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" name="btn" class="btn btn-primary">Submit</button>
 </form>

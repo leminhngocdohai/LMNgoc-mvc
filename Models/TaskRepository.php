@@ -5,30 +5,73 @@ use Mvc\Models\TaskResourceModel;
 use Mvc\Models\TaskModel;
 
 class TaskRepository {
+
+    /**
+     * @var TaskRepositoryModel| \Mvc\Models
+     */
+    
     protected $taskResourceModel;
 
+    /* Khởi tạo */
     public function __construct()
     {
         $this->taskResourceModel = new TaskResourceModel;
     }
 
-    public function getAll($model){
+    /**
+     * Get's all tasks.
+     *
+     * @return mixed
+     */
+
+    public function getAll($model)
+    {
         return $this->taskResourceModel->all($model);
     }
 
-    public function add($model){
+    /**
+     * Create a task.
+     *
+     * @param int
+     * @param array
+     */
+
+    public function add($model)
+    {
         return $this->taskResourceModel->save($model);
     }
 
-    public function get($id){
+    /**
+     * Get's a task by it's ID
+     *
+     * @param int
+     */
+
+    public function get($id)
+    {
         return $this->taskResourceModel->getId($id);
     }
 
-    public function edit($model){
+    /**
+     * Update a task.
+     *
+     * @param int
+     * @param array
+     */
+
+    public function edit($model)
+    {
         return $this->taskResourceModel->save($model);
     }
 
-    public function delete($model){
+    /**
+     * Deletes a task.
+     *
+     * @param int
+     */
+
+    public function delete($model)
+    {
         return $this->taskResourceModel->delete($model);
     }
     

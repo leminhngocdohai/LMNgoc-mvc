@@ -4,18 +4,25 @@ namespace Mvc\Core;
 use Mvc\Config\Database;
 use PDO;
 
-class ResourceModel implements ResourceModelInterface{
+class ResourceModel implements ResourceModelInterface {
     private $table;
     private $id;
     private $model;
 
-    public function _init($table, $id, $model){
+    public function _init($table, $id, $model) 
+    {
         $this->table = $table;
         $this->id = $id;
         $this->model = $model;
     }
 
-    public function all($model){
+    /**
+     * Get all
+     * @return mixed
+     */
+
+    public function all($model) 
+    {
         $sql = "SELECT * FROM ".$this->table;
         $req = Database::getBdd()->prepare($sql);
         $req->execute();
@@ -23,7 +30,15 @@ class ResourceModel implements ResourceModelInterface{
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function save($model){
+    /**
+     * Create & Update
+     * @param array $attributes
+     * @return mixed
+     * && @param $id
+     */
+
+    public function save($model) 
+    {
         /* Column Insert */
         $properties = $model->getProperties();
         $columnsInsert = implode(',', array_keys($properties));
@@ -61,7 +76,14 @@ class ResourceModel implements ResourceModelInterface{
         }
     }
 
-    public function getId($id){        
+    /**
+     * Get one
+     * @param $id
+     * @return mixed
+     */
+
+    public function getId($id) 
+    {        
         $class = get_class($this->model);
         $sql = "SELECT * FROM {$this->table} where id = :id";
         $req = Database::getBdd()->prepare($sql);
@@ -71,7 +93,14 @@ class ResourceModel implements ResourceModelInterface{
         return $req->fetch();
     }
 
-    public function delete($model){
+    /**
+     * Delete
+     * @param $id
+     * @return mixed
+     */
+
+    public function delete($model) 
+    {
         $sql = 'DELETE FROM '.$this->table.' WHERE id = '.$model->id;
         $req = Database::getBdd()->prepare($sql);
         return $req->execute(['id' => $model->id]);

@@ -4,17 +4,22 @@ namespace Mvc\Controllers;
 use Mvc\Core\Controller;
 use Mvc\Models\TaskModel;
 use Mvc\Models\TaskRepository;
-use Mvc\Config\Database;
 
 class TasksController extends Controller
 {
+    /**
+     * Repository muốn tương tác
+     * @var TaskRepositoryInterface|\Mvc\Models
+     */
     protected $taskRepository;
 
+    /* Khởi tạo */
     public function __construct()
     {
         $this->taskRepository = new TaskRepository;
     }
 
+    /* hàm Show tất cả task */
     function index()
     {
         $tasks = new TaskModel;
@@ -23,6 +28,7 @@ class TasksController extends Controller
         $this->render("index");
     }
 
+    /* hàm Thêm 1 new task */
     function create()
     {
         extract($_POST);
@@ -42,6 +48,7 @@ class TasksController extends Controller
         $this->render("create");
     }
 
+    /* hàm Sửa task với id */
     function edit($id)
     {
         extract($_POST);
@@ -65,6 +72,7 @@ class TasksController extends Controller
         $this->render("edit");
     }
 
+    /* hàm Xóa task với id */
     function delete($id)
     {
         $task = new TaskModel;

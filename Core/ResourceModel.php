@@ -5,9 +5,9 @@ use Mvc\Config\Database;
 use PDO;
 
 class ResourceModel implements ResourceModelInterface{
-    protected $table;
-    protected $id;
-    protected $model;
+    private $table;
+    private $id;
+    private $model;
 
     public function _init($table, $id, $model){
         $this->table = $table;
